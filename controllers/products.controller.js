@@ -25,7 +25,9 @@ export async function create(
     req,
     res
 ) {
-    const product = { id: Date.now(), ...req.body };
+    const product = { 
+              id: Date.now(), 
+              ...req.body };
     const created = await service.createProduct(product);
     res.status(201).json(created);
 }
