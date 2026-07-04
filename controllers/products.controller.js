@@ -1,18 +1,12 @@
 import * as service from '../services/products.service.js';
 
-export async function getAll(
-    req,
-    res
-) {
+export async function getAll( req, res) {
     const products = await service.getProducts();
     res.json(products);
     console.log('Controller GET');
 }
 
-export async function getById(
-    req,
-    res
-) {
+export async function getById(req,res) {
     const id = Number(req.params.id);
     const product = await service.getProduct(id);
 
@@ -21,10 +15,7 @@ export async function getById(
 }
 
 
-export async function create(
-    req,
-    res
-) {
+export async function create(req, res) {
     const product = { 
               id: Date.now(), 
               ...req.body };
@@ -32,19 +23,13 @@ export async function create(
     res.status(201).json(created);
 }
 
-export async function update(
-    req,
-    res
-) {
+export async function update(req,res) {
     const id = Number(req.params.id);
     const product = await service.updateProduct(id, req.body);
     res.json(product);
 }
 
-export async function remove(
-    req,
-    res
-) {
+export async function remove(req,res) {
     const id = Number(req.params.id);
 
     await service.deleteProduct(id);
